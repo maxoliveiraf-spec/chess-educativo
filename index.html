@@ -390,6 +390,85 @@
             }
         }
 
+        .donation-card {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+
+        .donation-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .qrcode-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            margin: 15px auto;
+            width: fit-content;
+        }
+
+        .qrcode-container img {
+            width: 200px;
+            height: 200px;
+            display: block;
+        }
+
+        .pix-code-container {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            align-items: center;
+        }
+
+        .pix-code-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.85em;
+            background: #f8f9fa;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .copy-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: auto;
+        }
+
+        .copy-button:hover {
+            background: #5568d3;
+        }
+
+        .copy-button.copied {
+            background: #28a745;
+        }
+
+        .donation-message {
+            background: #fff8e1;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #856404;
+            line-height: 1.5;
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 15px;
@@ -483,6 +562,21 @@
                 <div class="panel-section">
                     <h3>📝 Histórico de Movimentos</h3>
                     <div class="move-history" id="moveHistory"></div>
+                </div>
+
+                <div class="donation-card">
+                    <h3>💝 Apoie este Projeto</h3>
+                    <div class="qrcode-container">
+                        <img src="pix_qrcode.png" alt="QR Code PIX">
+                    </div>
+                    <div class="pix-code-container">
+                        <input type="text" class="pix-code-input" id="pixCode" value="00020126360014br.go..." readonly>
+                        <button class="copy-button" onclick="copyPixCode()">Copiar</button>
+                    </div>
+                    <div class="donation-message">
+                        <strong>Ajude com R$1,00</strong><br>
+                        Sua doação ajuda a manter este projeto gratuito e educativo!
+                    </div>
                 </div>
             </div>
         </div>
@@ -798,6 +892,25 @@
         // Fechar regras
         function closeRules() {
             document.getElementById('rulesModal').classList.remove('active');
+        }
+
+        // Copiar código PIX
+        function copyPixCode() {
+            const pixCode = "00020126360014br.gov.bcb.pix0114+557199724722852040000530398654041.005802BR5925Maxwel De Oliveira Figuei6009Sao Paulo62290525REC6920D7EDA18B824741864063040970";
+            
+            navigator.clipboard.writeText(pixCode).then(() => {
+                const button = document.querySelector('.copy-button');
+                const originalText = button.textContent;
+                button.textContent = '✓ Copiado!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                alert('Código PIX: ' + pixCode);
+            });
         }
 
         // Inicializar
