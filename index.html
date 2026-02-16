@@ -2,13 +2,26 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#667eea">
+    <meta name="description" content="Aprenda xadrez de forma divertida e educativa. Jogo completo com todas as peças e regras.">
     <title>Xadrez Educativo - Aprenda a Jogar</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -73,13 +86,19 @@
             width: 60px;
             height: 60px;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             font-size: 2em;
             cursor: pointer;
-            position: relative;
-            user-select: none;
             transition: all 0.2s ease;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .square:active {
+            transform: scale(0.95);
+            opacity: 0.8;
         }
 
         .square.light {
@@ -283,9 +302,11 @@
             cursor: pointer;
             font-size: 0.95em;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             min-width: 120px;
             touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
         }
 
         button:hover {
@@ -295,7 +316,8 @@
         }
 
         button:active {
-            transform: translateY(0);
+            transform: scale(0.96);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         button.secondary {
@@ -475,42 +497,156 @@
         }
 
         @media (max-width: 600px) {
+            body {
+                padding: 0;
+                align-items: flex-start;
+            }
+
             .container {
-                padding: 15px;
+                padding: 10px;
+                border-radius: 0;
+                box-shadow: none;
+                min-height: 100vh;
+            }
+
+            .header {
+                padding: 15px 10px;
+                margin-bottom: 15px;
             }
 
             h1 {
-                font-size: 1.5em;
+                font-size: 1.3em;
+            }
+
+            .subtitle {
+                font-size: 0.85em;
+            }
+
+            .tutorial-box {
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+
+            .tutorial-box h4 {
+                font-size: 0.95em;
+            }
+
+            .tutorial-box p {
+                font-size: 0.85em;
+            }
+
+            .game-wrapper {
+                gap: 15px;
+            }
+
+            .board-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
             .square {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2em;
+                width: 42px;
+                height: 42px;
+                font-size: 1.4em;
             }
 
             .chessboard {
-                width: 320px;
+                width: 336px;
             }
 
             .coordinates {
-                width: 320px;
+                width: 336px;
             }
 
             .coordinate {
-                width: 40px;
-                height: 16px;
-                font-size: 0.7em;
+                width: 42px;
+                height: 18px;
+                font-size: 0.75em;
             }
 
             .donation-card {
-                width: 320px;
+                width: 336px;
+                padding: 15px;
+                margin-top: 15px;
+            }
+
+            .donation-card h3 {
+                font-size: 1em;
+            }
+
+            .qrcode-container {
+                padding: 10px;
+            }
+
+            .qrcode-container img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .pix-code-input {
+                font-size: 0.75em;
+                padding: 8px;
+            }
+
+            .copy-button {
+                padding: 8px 15px;
+                font-size: 0.85em;
+            }
+
+            .donation-message {
+                font-size: 0.85em;
+                padding: 10px;
+            }
+
+            .side-panel {
+                width: 100%;
+            }
+
+            .status-box {
+                font-size: 0.95em;
+                padding: 12px;
+            }
+
+            .panel-section {
+                padding: 12px;
+            }
+
+            .panel-section h3 {
+                font-size: 1em;
+            }
+
+            .player-info {
+                font-size: 0.9em;
+                padding: 10px;
+            }
+
+            .captured-pieces {
+                font-size: 1em;
+            }
+
+            .move-history {
+                max-height: 150px;
+                font-size: 0.8em;
+            }
+
+            .controls {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 15px;
             }
 
             button {
-                padding: 10px 16px;
-                font-size: 0.85em;
-                min-width: 100px;
+                width: 100%;
+                padding: 14px 20px;
+                font-size: 0.95em;
+                min-width: auto;
+            }
+
+            .rules-modal .modal-content {
+                width: 95%;
+                max-height: 90vh;
+                padding: 20px;
             }
         }
     </style>
