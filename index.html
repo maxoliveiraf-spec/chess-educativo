@@ -388,6 +388,10 @@
             .coordinate {
                 width: 50px;
             }
+
+            .donation-card {
+                width: 400px;
+            }
         }
 
         .donation-card {
@@ -397,6 +401,7 @@
             padding: 20px;
             text-align: center;
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+            width: 480px;
         }
 
         .donation-card h3 {
@@ -498,6 +503,10 @@
                 font-size: 0.7em;
             }
 
+            .donation-card {
+                width: 320px;
+            }
+
             button {
                 padding: 10px 16px;
                 font-size: 0.85em;
@@ -522,6 +531,21 @@
             <div class="board-section">
                 <div class="chessboard" id="chessboard"></div>
                 <div class="coordinates" id="coordinates"></div>
+                
+                <div class="donation-card" style="margin-top: 20px;">
+                    <h3>💝 Apoie este Projeto</h3>
+                    <div class="qrcode-container">
+                        <img src="pix_qrcode.png" alt="QR Code PIX">
+                    </div>
+                    <div class="pix-code-container">
+                        <input type="text" class="pix-code-input" id="pixCode" value="00020126360014br.go..." readonly>
+                        <button class="copy-button" onclick="copyPixCode()">Copiar</button>
+                    </div>
+                    <div class="donation-message">
+                        <strong>Ajude com R$1,00</strong><br>
+                        Sua doação ajuda a manter este projeto gratuito e educativo!
+                    </div>
+                </div>
             </div>
 
             <div class="side-panel">
@@ -563,21 +587,6 @@
                     <h3>📝 Histórico de Movimentos</h3>
                     <div class="move-history" id="moveHistory"></div>
                 </div>
-            </div>
-        </div>
-
-        <div class="donation-card" style="max-width: 500px; margin: 30px auto;">
-            <h3>💝 Apoie este Projeto</h3>
-            <div class="qrcode-container">
-                <img src="pix_qrcode.png" alt="QR Code PIX">
-            </div>
-            <div class="pix-code-container">
-                <input type="text" class="pix-code-input" id="pixCode" value="00020126360014br.go..." readonly>
-                <button class="copy-button" onclick="copyPixCode()">Copiar</button>
-            </div>
-            <div class="donation-message">
-                <strong>Ajude com R$1,00</strong><br>
-                Sua doação ajuda a manter este projeto gratuito e educativo!
             </div>
         </div>
 
